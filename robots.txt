@@ -1,0 +1,10 @@
+User-agent: *
+
+Disallow: *
+Disallow: /*
+Disallow: /admi/*
+Disallow: /admi
+Disallow: /admin/*
+Disallow: /admin
+Disallow: /rbx
+Disallow: /vpn
