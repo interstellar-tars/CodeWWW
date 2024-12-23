@@ -1,1 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeWWW Support Chat</title>
+</head>
+<body>
+    <h1>Social Engineering Test Bot</h1>
+    <textarea id="userMessage" placeholder="Type your message here..."></textarea>
+    <button onclick="sendMessage()">Send</button>
+    <div id="response"></div>
 
+    <script>
+        async function sendMessage() {
+            const userMessage = document.getElementById('userMessage').value;
+            const responseDiv = document.getElementById('response');
+
+            try {
+                const response = await fetch('https://chatbot-worker.<your-subdomain>.workers.dev/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: userMessage }),
+                });
+                const data = await response.json();
+                responseDiv.innerHTML = `Bot: ${data.response}`;
+            } catch (error) {
+                responseDiv.innerHTML = 'Error: Unable to connect to the bot.';
+            }
+        }
+    </script>
+</body>
+</html>
