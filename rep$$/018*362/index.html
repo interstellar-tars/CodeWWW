@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CodeWWW IT Support Chatbot</title>
+    <title>CodeWWW IT Support</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -72,6 +72,12 @@
             border-bottom-left-radius: 0;
         }
 
+        .typing-indicator {
+            font-style: italic;
+            color: #666;
+            margin: 5px 0;
+        }
+
         .chat-input {
             display: flex;
             border-top: 1px solid #ddd;
@@ -104,7 +110,7 @@
 <body>
     <div class="chat-container">
         <div class="chat-header">
-            CodeWWW IT Support Chatbot
+            CodeWWW IT Support
         </div>
         <div class="chat-messages" id="chatMessages">
             <!-- Messages will appear here -->
@@ -130,6 +136,22 @@
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
 
+        function addTypingIndicator() {
+            const typingIndicator = document.createElement('div');
+            typingIndicator.classList.add('typing-indicator');
+            typingIndicator.textContent = "Agent is typing...";
+            typingIndicator.id = "typingIndicator";
+            chatMessages.appendChild(typingIndicator);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function removeTypingIndicator() {
+            const typingIndicator = document.getElementById('typingIndicator');
+            if (typingIndicator) {
+                typingIndicator.remove();
+            }
+        }
+
         async function sendMessage() {
             const userMessage = userMessageInput.value.trim();
             if (!userMessage) return;
@@ -138,9 +160,15 @@
             addMessage(userMessage, 'user');
             userMessageInput.value = '';
 
+            // Simulate agent typing
+            addTypingIndicator();
+
             try {
+                // Simulate delay for typing
+                await new Promise(resolve => setTimeout(resolve, 2000));
+
                 // Send the user's message to the chatbot API
-                const response = await fetch('https://cool-breeze-b6de.cubiodojo.workers.dev/chat', {
+                const response = await fetch('https://chatbot-worker.<your-subdomain>.workers.dev/chat', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ message: userMessage }),
@@ -148,10 +176,14 @@
 
                 const data = await response.json();
 
-                // Add bot's response to the chat
+                // Remove typing indicator
+                removeTypingIndicator();
+
+                // Add agent's response to the chat
                 addMessage(data.response, 'bot');
             } catch (error) {
-                addMessage('Error: Unable to connect to the chatbot.', 'bot');
+                removeTypingIndicator();
+                addMessage('Error: Unable to connect to the support agent.', 'bot');
             }
         }
     </script>
