@@ -3,29 +3,155 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CodeWWW Support Chat</title>
+    <title>CodeWWW IT Support Chatbot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .chat-container {
+            width: 90%;
+            max-width: 600px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-header {
+            background-color: #0078d7;
+            color: #ffffff;
+            padding: 15px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            background-color: #f9f9f9;
+        }
+
+        .message {
+            margin-bottom: 15px;
+            display: flex;
+        }
+
+        .message.user {
+            justify-content: flex-end;
+        }
+
+        .message-bubble {
+            max-width: 70%;
+            padding: 10px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .message.user .message-bubble {
+            background-color: #0078d7;
+            color: #ffffff;
+            border-bottom-right-radius: 0;
+        }
+
+        .message.bot .message-bubble {
+            background-color: #e4e6eb;
+            color: #333333;
+            border-bottom-left-radius: 0;
+        }
+
+        .chat-input {
+            display: flex;
+            border-top: 1px solid #ddd;
+            background-color: #ffffff;
+        }
+
+        .chat-input textarea {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            outline: none;
+            resize: none;
+            font-size: 14px;
+        }
+
+        .chat-input button {
+            background-color: #0078d7;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .chat-input button:hover {
+            background-color: #005bb5;
+        }
+    </style>
 </head>
 <body>
-    <h1>Social Engineering Test Bot</h1>
-    <textarea id="userMessage" placeholder="Type your message here..."></textarea>
-    <button onclick="sendMessage()">Send</button>
-    <div id="response"></div>
+    <div class="chat-container">
+        <div class="chat-header">
+            CodeWWW IT Support Chatbot
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <!-- Messages will appear here -->
+        </div>
+        <div class="chat-input">
+            <textarea id="userMessage" placeholder="Type your message here..." rows="1"></textarea>
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
 
     <script>
+        const chatMessages = document.getElementById('chatMessages');
+        const userMessageInput = document.getElementById('userMessage');
+
+        function addMessage(content, sender) {
+            const message = document.createElement('div');
+            message.classList.add('message', sender);
+            const bubble = document.createElement('div');
+            bubble.classList.add('message-bubble');
+            bubble.textContent = content;
+            message.appendChild(bubble);
+            chatMessages.appendChild(message);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
         async function sendMessage() {
-            const userMessage = document.getElementById('userMessage').value;
-            const responseDiv = document.getElementById('response');
+            const userMessage = userMessageInput.value.trim();
+            if (!userMessage) return;
+
+            // Add user's message to the chat
+            addMessage(userMessage, 'user');
+            userMessageInput.value = '';
 
             try {
+                // Send the user's message to the chatbot API
                 const response = await fetch('https://cool-breeze-b6de.cubiodojo.workers.dev/chat', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ message: userMessage }),
                 });
+
                 const data = await response.json();
-                responseDiv.innerHTML = `Bot: ${data.response}`;
+
+                // Add bot's response to the chat
+                addMessage(data.response, 'bot');
             } catch (error) {
-                responseDiv.innerHTML = 'Error: Unable to connect to the bot.';
+                addMessage('Error: Unable to connect to the chatbot.', 'bot');
             }
         }
     </script>
