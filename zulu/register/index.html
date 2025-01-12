@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register Organization</title>
+</head>
+<body>
+  <h1>Register Your Organization</h1>
+  <form id="registerForm">
+    <label for="orgName">Organization Name:</label>
+    <input type="text" id="orgName" name="orgName" required>
+    <label for="adminEmail">Admin Email:</label>
+    <input type="email" id="adminEmail" name="adminEmail" required>
+    <label for="adminPassword">Admin Password:</label>
+    <input type="password" id="adminPassword" name="adminPassword" required>
+    <button type="submit">Register</button>
+  </form>
+  <script>
+    document.getElementById("registerForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const orgName = document.getElementById("orgName").value;
+      const adminEmail = document.getElementById("adminEmail").value;
+      const adminPassword = document.getElementById("adminPassword").value;
+
+      const response = await fetch("https://cwww-login.cubiodojo.workers.dev/register-org", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ orgName, adminEmail, adminPassword }),
+      });
+
+      if (response.ok) {
+        alert("Organization registered successfully!");
+      } else {
+        alert("Error registering organization.");
+      }
+    });
+  </script>
+</body>
+</html>
