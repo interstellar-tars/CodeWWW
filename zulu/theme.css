@@ -1,0 +1,68 @@
+/* Global Dark Theme CSS */
+:root {
+    --background-color: #1f1e1e;
+    --foreground-color: #c4c3c3;
+    --primary-color: #bb86fc;
+    --secondary-color: #04b9a7;
+    --error-color: #cf6679;
+    --border-color: #272727;
+    --card-background: #2c2c2c;
+    --text-muted: #858383;
+    --zulu-color: #5bbaf5;
+  }
+  
+  body {
+    background-color: var(--background-color);
+    color: var(--foreground-color);
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  a {
+    color: var(--primary-color);
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  button {
+    background-color: var(--primary-color);
+    color: var(--foreground-color);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: var(--secondary-color);
+  }
+  
+  input, textarea {
+    background-color: var(--card-background);
+    color: var(--foreground-color);
+    border: 1px solid var(--border-color);
+    padding: 8px;
+    border-radius: 4px;
+  }
+  
+  .card {
+    background-color: var(--card-background);
+    color: var(--foreground-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  }
+  
+  .text-muted {
+    color: var(--text-muted);
+  }
+  
+  .error {
+    color: var(--error-color);
+  }
+  

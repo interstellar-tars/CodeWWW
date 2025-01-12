@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Theme Style Guide</title>
+    <link rel="stylesheet" href="./theme.css">
+    <link rel="stylesheet" href="./elements.css">
+    <link rel="stylesheet" href="./styleguide.css">
+</head>
+<body>
+    <header>
+        <center>
+            <h1>Dark Theme Style Guide - Zulu SSO</h1>
+        </center>
+    </header>
+
+    <main>
+        <center>
+            <section>
+                <h2>Color Palette</h2>
+                <div class="color-item">
+                    <div class="color-cell" style="background-color: var(--background-color);"></div>
+                    <div class="color-label">Background</div>
+                </div>
+                <div class="color-item">
+                    <div class="color-cell" style="background-color: var(--foreground-color);"></div>
+                    <div class="color-label">Foreground</div>
+                </div>
+                <div class="color-item">
+                    <div class="color-cell" style="background-color: var(--primary-color);"></div>
+                    <div class="color-label">Primary</div>
+                </div>
+                <div class="color-item">
+                    <div class="color-cell" style="background-color: var(--secondary-color);"></div>
+                    <div class="color-label">Secondary</div>
+                </div>
+                <div class="color-item">
+                    <div class="color-cell" style="background-color: var(--error-color);"></div>
+                    <div class="color-label">Error</div>
+                </div>
+                <div class="color-item">
+                    <div class="color-cell" style="background-color: var(--card-background);"></div>
+                    <div class="color-label">Card Background</div>
+                </div>
+                <div class="color-item">
+                    <div class="color-cell" style="background-color: var(--text-muted);"></div>
+                    <div class="color-label">Text Muted</div>
+                </div>
+                <div class="color-item">
+                    <div class="color-cell" style="background-color: var(--zulu-color);"></div>
+                    <div class="color-label">Zulu Color</div>
+                </div>
+            </section>
+        </center>
+        <center>
+            <section>
+                <h2>Usage Guide</h2>
+                <p>To incorporate the dark theme into your site:</p>
+                <ol>
+                    <li>Include the global CSS file in your HTML:
+                        <pre><code>&lt;link rel="stylesheet" href="theme.css"&gt;</code></pre>
+                        <pre><code>&lt;link rel="stylesheet" href="elements.css"&gt;</code></pre>
+                    </li>
+                    <li>Use the CSS variables in your styles:
+                        <pre><code>color: var(--primary-color);</code></pre>
+                    </li>
+                    <li>Use predefined classes like <code>.card</code> or <code>.text-muted</code> for consistent
+                        styling.</li>
+                </ol>
+            </section>
+        </center>
+    </main>
+</body>
+</html>
