@@ -3,61 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zulu SSO Integration Guide</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-    }
-    h1 {
-      color: #333;
-    }
-    pre {
-      background-color: #f4f4f4;
-      padding: 10px;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      overflow-x: auto;
-    }
-    code {
-      color: #d14;
-    }
-  </style>
+  <title>Zulu SSO</title>
 </head>
 <body>
-  <h1>How to Integrate Zulu SSO with Your Platform</h1>
-  <p>Zulu SSO is a standards-compliant OAuth 2.0 and OpenID Connect (OIDC) provider. Follow these steps to integrate Zulu SSO with platforms like Google Workspace, Proton Mail, and others.</p>
-
-  <h2>Step 1: Register Zulu as an Identity Provider</h2>
-  <p>In the platform’s admin console, locate the section for adding an external identity provider. Provide the following details:</p>
-  <ul>
-    <li><strong>Authorization Endpoint:</strong> <code>https://your-zulu-sso-url/authorize</code></li>
-    <li><strong>Token Endpoint:</strong> <code>https://your-zulu-sso-url/token</code></li>
-    <li><strong>Userinfo Endpoint:</strong> <code>https://your-zulu-sso-url/userinfo</code></li>
-    <li><strong>Scopes:</strong> <code>openid profile email</code></li>
-  </ul>
-
-  <h2>Step 2: Configure Redirect URIs</h2>
-  <p>In Zulu SSO, ensure that the <code>redirect_uri</code> matches the callback URL specified by the platform. For example:</p>
-  <pre><code>https://your-platform.com/callback</code></pre>
-
-  <h2>Step 3: Test the Integration</h2>
-  <p>Perform the following steps to test the integration:</p>
-  <ol>
-    <li>Initiate the login flow from the platform. It should redirect to the Zulu SSO login page.</li>
-    <li>Log in using your Zulu SSO credentials.</li>
-    <li>Verify that the platform receives a valid token and can fetch user information from the <code>/userinfo</code> endpoint.</li>
-  </ol>
-
-  <h2>Example Configuration for Google Workspace</h2>
-  <p>In Google Workspace, navigate to <strong>Security &gt; Set up single sign-on (SSO)</strong> and provide the following:</p>
-  <ul>
-    <li><strong>Sign-in page URL:</strong> <code>https://your-zulu-sso-url/authorize</code></li>
-    <li><strong>Sign-out page URL:</strong> <code>https://your-zulu-sso-url/logout</code></li>
-    <li><strong>Verification certificate:</strong> Upload your public key if required.</li>
-  </ul>
-
-  <h2>Need Help?</h2>
-  <p>If you encounter any issues, contact our support team at <a href="mailto:support@zulusso.com">support@zulusso.com</a>.</p>
+  <h1>Welcome to Zulu SSO</h1>
+  <p><a href="/register/">Register your organization</a></p>
+  <p><a href="/zulu/login/">Login</a></p>
 </body>
 </html>
