@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Organization</title>
+</head>
+<body>
+  <h1>Login for Organization: <span id="orgName"></span></h1>
+  <form id="loginForm">
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+    <button type="submit">Login</button>
+  </form>
+  <script>
+    const orgName = window.location.pathname.split("/")[2];
+    document.getElementById("orgName").textContent = orgName;
+  </script>
+</body>
+</html>
