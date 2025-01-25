@@ -26,18 +26,29 @@
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        .application {
+        .application, .job {
             border: 1px solid #ddd;
             border-radius: 4px;
             padding: 1rem;
             margin-bottom: 1rem;
             background-color: #f9f9f9;
         }
-        .application h3 {
+        .application h3, .job h3 {
             margin: 0 0 0.5rem;
         }
-        .application p {
+        .application p, .job p {
             margin: 0.5rem 0;
+        }
+        .delete-button {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .delete-button:hover {
+            background-color: #c0392b;
         }
     </style>
 </head>
@@ -49,6 +60,11 @@
         <h2>Submitted Applications</h2>
         <div id="applications">
             <p>Loading applications...</p>
+        </div>
+
+        <h2>Job Openings</h2>
+        <div id="jobs">
+            <p>Loading job openings...</p>
         </div>
     </div>
     <script>
@@ -62,6 +78,54 @@
                 renderApplications(applications);
             } catch (error) {
                 document.getElementById('applications').innerHTML = '<p>Error loading applications. Please try again later.</p>';
+                console.error(error);
+            }
+        }
+
+        async function fetchJobs() {
+            try {
+                const response = await fetch('/api/jobs');
+                if (!response.ok) {
+                    throw new Error('Failed to fetch jobs');
+                }
+                const jobs = await response.json();
+                renderJobs(jobs);
+            } catch (error) {
+                document.getElementById('jobs').innerHTML = '<p>Error loading job openings. Please try again later.</p>';
+                console.error(error);
+            }
+        }
+
+        async function deleteApplication(id) {
+            try {
+                const response = await fetch(`/api/applications/${id}`, {
+                    method: 'DELETE'
+                });
+                if (response.ok) {
+                    alert('Application deleted successfully');
+                    fetchApplications();
+                } else {
+                    alert('Failed to delete application');
+                }
+            } catch (error) {
+                alert('An error occurred while deleting the application');
+                console.error(error);
+            }
+        }
+
+        async function deleteJob(id) {
+            try {
+                const response = await fetch(`/api/jobs/${id}`, {
+                    method: 'DELETE'
+                });
+                if (response.ok) {
+                    alert('Job opening deleted successfully');
+                    fetchJobs();
+                } else {
+                    alert('Failed to delete job opening');
+                }
+            } catch (error) {
+                alert('An error occurred while deleting the job opening');
                 console.error(error);
             }
         }
@@ -82,12 +146,34 @@
                     <p><strong>Email:</strong> ${app.email}</p>
                     <p><strong>Job:</strong> ${app.job}</p>
                     <p><strong>Message:</strong> ${app.message}</p>
+                    <button class="delete-button" onclick="deleteApplication('${app.id}')">Delete</button>
                 `;
                 container.appendChild(appElement);
             });
         }
 
+        function renderJobs(jobs) {
+            const container = document.getElementById('jobs');
+            container.innerHTML = '';
+            if (jobs.length === 0) {
+                container.innerHTML = '<p>No job openings found.</p>';
+                return;
+            }
+            jobs.forEach((job, index) => {
+                const jobElement = document.createElement('div');
+                jobElement.classList.add('job');
+                jobElement.innerHTML = `
+                    <h3>Job #${index + 1}</h3>
+                    <p><strong>Title:</strong> ${job.title}</p>
+                    <p><strong>Description:</strong> ${job.description}</p>
+                    <button class="delete-button" onclick="deleteJob('${job.id}')">Delete</button>
+                `;
+                container.appendChild(jobElement);
+            });
+        }
+
         fetchApplications();
+        fetchJobs();
     </script>
 </body>
 </html>
