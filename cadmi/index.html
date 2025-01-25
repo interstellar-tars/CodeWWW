@@ -54,7 +54,7 @@
     <script>
         async function fetchApplications() {
             try {
-                const response = await fetch('/api/applications');
+                const response = await fetch('https://cwww-applications.cubiodojo.workers.dev/api/applications');
                 if (!response.ok) {
                     throw new Error('Failed to fetch applications');
                 }
