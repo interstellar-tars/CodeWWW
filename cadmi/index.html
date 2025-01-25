@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Portal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .application {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background-color: #f9f9f9;
+        }
+        .application h3 {
+            margin: 0 0 0.5rem;
+        }
+        .application p {
+            margin: 0.5rem 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Admin Portal</h1>
+    </header>
+    <div class="container">
+        <h2>Submitted Applications</h2>
+        <div id="applications">
+            <p>Loading applications...</p>
+        </div>
+    </div>
+    <script>
+        async function fetchApplications() {
+            try {
+                const response = await fetch('/api/applications');
+                if (!response.ok) {
+                    throw new Error('Failed to fetch applications');
+                }
+                const applications = await response.json();
+                renderApplications(applications);
+            } catch (error) {
+                document.getElementById('applications').innerHTML = '<p>Error loading applications. Please try again later.</p>';
+                console.error(error);
+            }
+        }
+
+        function renderApplications(applications) {
+            const container = document.getElementById('applications');
+            container.innerHTML = '';
+            if (applications.length === 0) {
+                container.innerHTML = '<p>No applications found.</p>';
+                return;
+            }
+            applications.forEach((app, index) => {
+                const appElement = document.createElement('div');
+                appElement.classList.add('application');
+                appElement.innerHTML = `
+                    <h3>Application #${index + 1}</h3>
+                    <p><strong>Name:</strong> ${app.name}</p>
+                    <p><strong>Email:</strong> ${app.email}</p>
+                    <p><strong>Job:</strong> ${app.job}</p>
+                    <p><strong>Message:</strong> ${app.message}</p>
+                `;
+                container.appendChild(appElement);
+            });
+        }
+
+        fetchApplications();
+    </script>
+</body>
+</html>
