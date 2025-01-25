@@ -119,7 +119,7 @@
             const application = { name, email, job, message };
 
             try {
-                const response = await fetch('/api/submit', {
+                const response = await fetch('https://cwww-applications.cubiodojo.workers.dev/api/submit', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
