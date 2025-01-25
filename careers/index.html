@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Board</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .job {
+            border-bottom: 1px solid #ddd;
+            padding: 1rem 0;
+        }
+        .job:last-child {
+            border-bottom: none;
+        }
+        .job h3 {
+            margin: 0;
+        }
+        .job p {
+            margin: 0.5rem 0 0;
+        }
+        .apply-form {
+            margin-top: 2rem;
+        }
+        .apply-form input, .apply-form textarea, .apply-form button {
+            width: 100%;
+            padding: 0.75rem;
+            margin: 0.5rem 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .apply-form button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .apply-form button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Job Board</h1>
+    </header>
+    <div class="container">
+        <h2>Open Positions</h2>
+        <div id="jobs">
+            <!-- Jobs will be dynamically loaded here -->
+        </div>
+        <form class="apply-form" id="applyForm">
+            <h2>Apply for a Job</h2>
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Your Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="job">Job Title:</label>
+            <input type="text" id="job" name="job" required>
+
+            <label for="message">Why are you a good fit?</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+
+            <button type="submit">Submit Application</button>
+        </form>
+    </div>
+    <script>
+        const jobs = [
+            { title: 'Frontend Developer', description: 'Build amazing user interfaces with React.' },
+            { title: 'Backend Developer', description: 'Design robust APIs and manage databases.' },
+            { title: 'UI/UX Designer', description: 'Create intuitive and beautiful designs.' }
+        ];
+
+        const jobsContainer = document.getElementById('jobs');
+
+        // Render jobs
+        jobs.forEach(job => {
+            const jobElement = document.createElement('div');
+            jobElement.classList.add('job');
+            jobElement.innerHTML = `
+                <h3>${job.title}</h3>
+                <p>${job.description}</p>
+            `;
+            jobsContainer.appendChild(jobElement);
+        });
+
+        // Handle form submission
+        const applyForm = document.getElementById('applyForm');
+        applyForm.addEventListener('submit', event => {
+            event.preventDefault();
+            alert('Your application has been submitted!');
+            applyForm.reset();
+        });
+    </script>
+</body>
+</html>
