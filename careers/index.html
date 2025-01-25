@@ -108,10 +108,35 @@
 
         // Handle form submission
         const applyForm = document.getElementById('applyForm');
-        applyForm.addEventListener('submit', event => {
+        applyForm.addEventListener('submit', async (event) => {
             event.preventDefault();
-            alert('Your application has been submitted!');
-            applyForm.reset();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const job = document.getElementById('job').value;
+            const message = document.getElementById('message').value;
+
+            const application = { name, email, job, message };
+
+            try {
+                const response = await fetch('/api/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(application)
+                });
+
+                if (response.ok) {
+                    alert('Your application has been submitted!');
+                    applyForm.reset();
+                } else {
+                    alert('Failed to submit your application. Please try again later.');
+                }
+            } catch (error) {
+                alert('An error occurred while submitting your application.');
+                console.error(error);
+            }
         });
     </script>
 </body>
