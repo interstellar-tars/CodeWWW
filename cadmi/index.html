@@ -39,7 +39,7 @@
         .application p, .job p {
             margin: 0.5rem 0;
         }
-        .delete-button {
+        .delete-button, .create-button {
             background-color: #e74c3c;
             color: white;
             border: none;
@@ -47,8 +47,21 @@
             border-radius: 4px;
             cursor: pointer;
         }
-        .delete-button:hover {
+        .delete-button:hover, .create-button:hover {
             background-color: #c0392b;
+        }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
         }
     </style>
 </head>
@@ -57,6 +70,19 @@
         <h1>Admin Portal</h1>
     </header>
     <div class="container">
+        <h2>Create Job Opening</h2>
+        <form id="job-form">
+            <div class="form-group">
+                <label for="job-title">Job Title</label>
+                <input type="text" id="job-title" name="title" required>
+            </div>
+            <div class="form-group">
+                <label for="job-description">Job Description</label>
+                <textarea id="job-description" name="description" required></textarea>
+            </div>
+            <button type="submit" class="create-button">Create Job</button>
+        </form>
+
         <h2>Submitted Applications</h2>
         <div id="applications">
             <p>Loading applications...</p>
@@ -70,7 +96,7 @@
     <script>
         async function fetchApplications() {
             try {
-                const response = await fetch('https://cwww-applications.cubiodojo.workers.dev/api/applications');
+                const response = await fetch('/api/applications');
                 if (!response.ok) {
                     throw new Error('Failed to fetch applications');
                 }
@@ -130,6 +156,33 @@
             }
         }
 
+        async function createJob(event) {
+            event.preventDefault();
+            const title = document.getElementById('job-title').value;
+            const description = document.getElementById('job-description').value;
+
+            try {
+                const response = await fetch('/api/jobs', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ title, description })
+                });
+
+                if (response.ok) {
+                    alert('Job created successfully');
+                    document.getElementById('job-form').reset();
+                    fetchJobs();
+                } else {
+                    alert('Failed to create job');
+                }
+            } catch (error) {
+                alert('An error occurred while creating the job');
+                console.error(error);
+            }
+        }
+
         function renderApplications(applications) {
             const container = document.getElementById('applications');
             container.innerHTML = '';
@@ -171,6 +224,8 @@
                 container.appendChild(jobElement);
             });
         }
+
+        document.getElementById('job-form').addEventListener('submit', createJob);
 
         fetchApplications();
         fetchJobs();
