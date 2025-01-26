@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Job Board</title>
+    <title>Job Openings</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -13,7 +13,7 @@
             color: #333;
         }
         header {
-            background-color: #4CAF50;
+            background-color: #333;
             color: white;
             padding: 1rem;
             text-align: center;
@@ -27,117 +27,132 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         .job {
-            border-bottom: 1px solid #ddd;
-            padding: 1rem 0;
-        }
-        .job:last-child {
-            border-bottom: none;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background-color: #f9f9f9;
         }
         .job h3 {
-            margin: 0;
+            margin: 0 0 0.5rem;
         }
         .job p {
-            margin: 0.5rem 0 0;
+            margin: 0.5rem 0;
         }
         .apply-form {
-            margin-top: 2rem;
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: #f4f4f4;
+            border-radius: 4px;
         }
-        .apply-form input, .apply-form textarea, .apply-form button {
+        .apply-form .form-group {
+            margin-bottom: 1rem;
+        }
+        .apply-form .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        .apply-form .form-group input, .apply-form .form-group textarea {
             width: 100%;
-            padding: 0.75rem;
-            margin: 0.5rem 0;
-            border: 1px solid #ccc;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
             border-radius: 4px;
         }
         .apply-form button {
-            background-color: #4CAF50;
+            background-color: #3498db;
             color: white;
             border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
             cursor: pointer;
         }
         .apply-form button:hover {
-            background-color: #45a049;
+            background-color: #2980b9;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Job Board</h1>
+        <h1>Job Openings</h1>
     </header>
-    <div class="container">
-        <h2>Open Positions</h2>
-        <div id="jobs">
-            <!-- Jobs will be dynamically loaded here -->
-        </div>
-        <form class="apply-form" id="applyForm">
-            <h2>Apply for a Job</h2>
-            <label for="name">Your Name:</label>
-            <input type="text" id="name" name="name" required>
-
-            <label for="email">Your Email:</label>
-            <input type="email" id="email" name="email" required>
-
-            <label for="job">Job Title:</label>
-            <input type="text" id="job" name="job" required>
-
-            <label for="message">Why are you a good fit?</label>
-            <textarea id="message" name="message" rows="5" required></textarea>
-
-            <button type="submit">Submit Application</button>
-        </form>
+    <div class="container" id="job-container">
+        <p>Loading job openings...</p>
     </div>
     <script>
-        const jobs = [
-            { title: 'Frontend Developer', description: 'Build amazing user interfaces with React.' },
-            { title: 'Backend Developer', description: 'Design robust APIs and manage databases.' },
-            { title: 'UI/UX Designer', description: 'Create intuitive and beautiful designs.' }
-        ];
-
-        const jobsContainer = document.getElementById('jobs');
-
-        // Render jobs
-        jobs.forEach(job => {
-            const jobElement = document.createElement('div');
-            jobElement.classList.add('job');
-            jobElement.innerHTML = `
-                <h3>${job.title}</h3>
-                <p>${job.description}</p>
-            `;
-            jobsContainer.appendChild(jobElement);
-        });
-
-        // Handle form submission
-        const applyForm = document.getElementById('applyForm');
-        applyForm.addEventListener('submit', async (event) => {
-            event.preventDefault();
-
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const job = document.getElementById('job').value;
-            const message = document.getElementById('message').value;
-
-            const application = { name, email, job, message };
-
+        async function fetchJobs() {
             try {
-                const response = await fetch('https://cwww-applications.cubiodojo.workers.dev/api/submit', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(application)
-                });
+                const response = await fetch('/api/jobs');
+                if (!response.ok) throw new Error('Failed to fetch jobs');
+                const jobs = await response.json();
+                renderJobs(jobs);
+            } catch (error) {
+                document.getElementById('job-container').innerHTML = '<p>Error loading job openings. Please try again later.</p>';
+                console.error(error);
+            }
+        }
 
+        function renderJobs(jobs) {
+            const container = document.getElementById('job-container');
+            container.innerHTML = '';
+            if (jobs.length === 0) {
+                container.innerHTML = '<p>No job openings found.</p>';
+                return;
+            }
+            jobs.forEach((job) => {
+                const jobElement = document.createElement('div');
+                jobElement.classList.add('job');
+                jobElement.innerHTML = `
+                    <h3>${job.title}</h3>
+                    <p>${job.description}</p>
+                    <form class="apply-form" onsubmit="submitApplication(event, '${job.id}')">
+                        <div class="form-group">
+                            <label for="name-${job.id}">Name</label>
+                            <input type="text" id="name-${job.id}" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email-${job.id}">Email</label>
+                            <input type="email" id="email-${job.id}" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message-${job.id}">Message</label>
+                            <textarea id="message-${job.id}" name="message" required></textarea>
+                        </div>
+                        <button type="submit">Apply</button>
+                    </form>
+                `;
+                container.appendChild(jobElement);
+            });
+        }
+
+        async function submitApplication(event, jobId) {
+            event.preventDefault();
+            const form = event.target;
+            const formData = new FormData(form);
+            const applicationData = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                message: formData.get('message'),
+                job: jobId,
+            };
+            try {
+                const response = await fetch('/api/applications', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(applicationData),
+                });
                 if (response.ok) {
-                    alert('Your application has been submitted!');
-                    applyForm.reset();
+                    alert('Application submitted successfully!');
+                    form.reset();
                 } else {
-                    alert('Failed to submit your application. Please try again later.');
+                    alert('Failed to submit application. Please try again.');
                 }
             } catch (error) {
                 alert('An error occurred while submitting your application.');
                 console.error(error);
             }
-        });
+        }
+
+        fetchJobs();
     </script>
 </body>
 </html>
