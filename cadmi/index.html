@@ -26,20 +26,26 @@
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        .application, .job {
+        h2 {
+            margin-top: 0;
+        }
+        .section {
+            margin-bottom: 2rem;
+        }
+        .section h3 {
+            margin-bottom: 1rem;
+        }
+        .job, .application {
             border: 1px solid #ddd;
             border-radius: 4px;
             padding: 1rem;
             margin-bottom: 1rem;
             background-color: #f9f9f9;
         }
-        .application h3, .job h3 {
-            margin: 0 0 0.5rem;
+        .job-actions, .application-actions {
+            margin-top: 1rem;
         }
-        .application p, .job p {
-            margin: 0.5rem 0;
-        }
-        .delete-button, .create-button {
+        .job-actions button, .application-actions button {
             background-color: #e74c3c;
             color: white;
             border: none;
@@ -47,21 +53,35 @@
             border-radius: 4px;
             cursor: pointer;
         }
-        .delete-button:hover, .create-button:hover {
+        .job-actions button:hover, .application-actions button:hover {
             background-color: #c0392b;
         }
-        .form-group {
+        form {
+            margin-top: 1rem;
+        }
+        form .form-group {
             margin-bottom: 1rem;
         }
-        .form-group label {
+        form .form-group label {
             display: block;
             margin-bottom: 0.5rem;
         }
-        .form-group input, .form-group textarea {
+        form .form-group input, form .form-group textarea {
             width: 100%;
             padding: 0.5rem;
             border: 1px solid #ddd;
             border-radius: 4px;
+        }
+        form button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        form button:hover {
+            background-color: #2980b9;
         }
     </style>
 </head>
@@ -70,165 +90,162 @@
         <h1>Admin Portal</h1>
     </header>
     <div class="container">
-        <h2>Create Job Opening</h2>
-        <form id="job-form">
-            <div class="form-group">
-                <label for="job-title">Job Title</label>
-                <input type="text" id="job-title" name="title" required>
+        <section class="section" id="jobs-section">
+            <h2>Job Openings</h2>
+            <div id="jobs-container">
+                <p>Loading job openings...</p>
             </div>
-            <div class="form-group">
-                <label for="job-description">Job Description</label>
-                <textarea id="job-description" name="description" required></textarea>
+            <form id="job-form">
+                <h3>Create Job</h3>
+                <div class="form-group">
+                    <label for="job-title">Title</label>
+                    <input type="text" id="job-title" required>
+                </div>
+                <div class="form-group">
+                    <label for="job-description">Description</label>
+                    <textarea id="job-description" required></textarea>
+                </div>
+                <button type="submit">Create Job</button>
+            </form>
+        </section>
+        <section class="section" id="applications-section">
+            <h2>Applications</h2>
+            <div id="applications-container">
+                <p>Loading applications...</p>
             </div>
-            <button type="submit" class="create-button">Create Job</button>
-        </form>
-
-        <h2>Submitted Applications</h2>
-        <div id="applications">
-            <p>Loading applications...</p>
-        </div>
-
-        <h2>Job Openings</h2>
-        <div id="jobs">
-            <p>Loading job openings...</p>
-        </div>
+        </section>
     </div>
     <script>
-        async function fetchApplications() {
-            try {
-                const response = await fetch('/api/applications');
-                if (!response.ok) {
-                    throw new Error('Failed to fetch applications');
-                }
-                const applications = await response.json();
-                renderApplications(applications);
-            } catch (error) {
-                document.getElementById('applications').innerHTML = '<p>Error loading applications. Please try again later.</p>';
-                console.error(error);
-            }
-        }
+        const jobsEndpoint = 'https://cwww-applications.cubiodojo.workers.dev/api/jobs';
+        const applicationsEndpoint = 'https://cwww-applications.cubiodojo.workers.dev/api/applications';
 
         async function fetchJobs() {
             try {
-                const response = await fetch('/api/jobs');
-                if (!response.ok) {
-                    throw new Error('Failed to fetch jobs');
-                }
+                const response = await fetch(jobsEndpoint);
+                if (!response.ok) throw new Error('Failed to fetch jobs');
                 const jobs = await response.json();
                 renderJobs(jobs);
             } catch (error) {
-                document.getElementById('jobs').innerHTML = '<p>Error loading job openings. Please try again later.</p>';
+                document.getElementById('jobs-container').innerHTML = '<p>Error loading job openings. Please try again later.</p>';
                 console.error(error);
             }
         }
 
-        async function deleteApplication(id) {
+        async function fetchApplications() {
             try {
-                const response = await fetch(`/api/applications/${id}`, {
-                    method: 'DELETE'
-                });
-                if (response.ok) {
-                    alert('Application deleted successfully');
-                    fetchApplications();
-                } else {
-                    alert('Failed to delete application');
-                }
+                const response = await fetch(applicationsEndpoint);
+                if (!response.ok) throw new Error('Failed to fetch applications');
+                const applications = await response.json();
+                renderApplications(applications);
             } catch (error) {
-                alert('An error occurred while deleting the application');
+                document.getElementById('applications-container').innerHTML = '<p>Error loading applications. Please try again later.</p>';
                 console.error(error);
             }
-        }
-
-        async function deleteJob(id) {
-            try {
-                const response = await fetch(`/api/jobs/${id}`, {
-                    method: 'DELETE'
-                });
-                if (response.ok) {
-                    alert('Job opening deleted successfully');
-                    fetchJobs();
-                } else {
-                    alert('Failed to delete job opening');
-                }
-            } catch (error) {
-                alert('An error occurred while deleting the job opening');
-                console.error(error);
-            }
-        }
-
-        async function createJob(event) {
-            event.preventDefault();
-            const title = document.getElementById('job-title').value;
-            const description = document.getElementById('job-description').value;
-
-            try {
-                const response = await fetch('/api/jobs', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ title, description })
-                });
-
-                if (response.ok) {
-                    alert('Job created successfully');
-                    document.getElementById('job-form').reset();
-                    fetchJobs();
-                } else {
-                    alert('Failed to create job');
-                }
-            } catch (error) {
-                alert('An error occurred while creating the job');
-                console.error(error);
-            }
-        }
-
-        function renderApplications(applications) {
-            const container = document.getElementById('applications');
-            container.innerHTML = '';
-            if (applications.length === 0) {
-                container.innerHTML = '<p>No applications found.</p>';
-                return;
-            }
-            applications.forEach((app, index) => {
-                const appElement = document.createElement('div');
-                appElement.classList.add('application');
-                appElement.innerHTML = `
-                    <h3>Application #${index + 1}</h3>
-                    <p><strong>Name:</strong> ${app.name}</p>
-                    <p><strong>Email:</strong> ${app.email}</p>
-                    <p><strong>Job:</strong> ${app.job}</p>
-                    <p><strong>Message:</strong> ${app.message}</p>
-                    <button class="delete-button" onclick="deleteApplication('${app.id}')">Delete</button>
-                `;
-                container.appendChild(appElement);
-            });
         }
 
         function renderJobs(jobs) {
-            const container = document.getElementById('jobs');
+            const container = document.getElementById('jobs-container');
             container.innerHTML = '';
             if (jobs.length === 0) {
                 container.innerHTML = '<p>No job openings found.</p>';
                 return;
             }
-            jobs.forEach((job, index) => {
+            jobs.forEach((job) => {
                 const jobElement = document.createElement('div');
                 jobElement.classList.add('job');
                 jobElement.innerHTML = `
-                    <h3>Job #${index + 1}</h3>
-                    <p><strong>Title:</strong> ${job.title}</p>
-                    <p><strong>Description:</strong> ${job.description}</p>
-                    <button class="delete-button" onclick="deleteJob('${job.id}')">Delete</button>
+                    <h3>${job.title}</h3>
+                    <p>${job.description}</p>
+                    <div class="job-actions">
+                        <button onclick="deleteJob('${job.id}')">Delete</button>
+                    </div>
                 `;
                 container.appendChild(jobElement);
             });
         }
 
-        document.getElementById('job-form').addEventListener('submit', createJob);
+        function renderApplications(applications) {
+            const container = document.getElementById('applications-container');
+            container.innerHTML = '';
+            if (applications.length === 0) {
+                container.innerHTML = '<p>No applications found.</p>';
+                return;
+            }
+            applications.forEach((application) => {
+                const appElement = document.createElement('div');
+                appElement.classList.add('application');
+                appElement.innerHTML = `
+                    <h3>${application.name}</h3>
+                    <p>Email: ${application.email}</p>
+                    <p>Message: ${application.message}</p>
+                    <p>Applied for Job ID: ${application.job}</p>
+                    <div class="application-actions">
+                        <button onclick="deleteApplication('${application.id}')">Delete</button>
+                    </div>
+                `;
+                container.appendChild(appElement);
+            });
+        }
 
-        fetchApplications();
+        async function deleteJob(jobId) {
+            if (confirm('Are you sure you want to delete this job?')) {
+                try {
+                    const response = await fetch(`${jobsEndpoint}/${jobId}`, { method: 'DELETE' });
+                    if (response.ok) {
+                        alert('Job deleted successfully!');
+                        fetchJobs();
+                    } else {
+                        alert('Failed to delete job.');
+                    }
+                } catch (error) {
+                    alert('An error occurred while deleting the job.');
+                    console.error(error);
+                }
+            }
+        }
+
+        async function deleteApplication(applicationId) {
+            if (confirm('Are you sure you want to delete this application?')) {
+                try {
+                    const response = await fetch(`${applicationsEndpoint}/${applicationId}`, { method: 'DELETE' });
+                    if (response.ok) {
+                        alert('Application deleted successfully!');
+                        fetchApplications();
+                    } else {
+                        alert('Failed to delete application.');
+                    }
+                } catch (error) {
+                    alert('An error occurred while deleting the application.');
+                    console.error(error);
+                }
+            }
+        }
+
+        document.getElementById('job-form').addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const title = document.getElementById('job-title').value;
+            const description = document.getElementById('job-description').value;
+            try {
+                const response = await fetch(jobsEndpoint, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ title, description }),
+                });
+                if (response.ok) {
+                    alert('Job created successfully!');
+                    document.getElementById('job-form').reset();
+                    fetchJobs();
+                } else {
+                    alert('Failed to create job.');
+                }
+            } catch (error) {
+                alert('An error occurred while creating the job.');
+                console.error(error);
+            }
+        });
+
         fetchJobs();
+        fetchApplications();
     </script>
 </body>
 </html>
