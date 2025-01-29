@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+.error-icon{
+    vertical-align: middle;
+    width: 200px;
+    height: 200px;
+    background-image: url(./e48462f.png);
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    display: inline-block
+}
+.error-text{
+    font-family: Roboto;
+    color: #6e6e6e;
+}
+.server-info{
+    font-family: Roboto;
+    color: #cfcece;
+    font-size: x-small;
+}
