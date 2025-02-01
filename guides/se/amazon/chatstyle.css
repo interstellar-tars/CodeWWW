@@ -1,0 +1,934 @@
+.it-services-aea-url {
+    color: #82d8e3
+}
+
+.firstaid-start-chat-page {
+    background-color: #fff;
+    height: 100vh;
+    overflow: auto
+}
+
+.spinner-position {
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    left: 50%
+}
+
+.form-content {
+    margin: auto;
+    width: 70%;
+    min-width: 250px;
+    max-width: 400px
+}
+
+.chat-form-subtitle {
+    margin: 0;
+    height: 22px;
+    left: 527px;
+    top: 683px;
+    font-family: Amazon Ember;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 22px;
+    display: flex;
+    align-items: center;
+    color: #232f3e
+}
+
+.it-chat-form-header {
+    padding-top: 50px;
+    padding-bottom: 10px;
+    width: 400px;
+    height: 30px;
+    left: 527px;
+    top: 125px
+}
+
+.it-chat-form-title-text {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 28px;
+    color: #104643
+}
+
+.chat-form-field,.it-chat-form-title-text {
+    font-family: Amazon Ember;
+    font-style: normal;
+    display: flex;
+    align-items: center
+}
+
+.chat-form-field {
+    height: 30px;
+    width: 400px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 150%;
+    color: #232f3e;
+    flex: none;
+    order: 1;
+    flex-grow: 1
+}
+
+.chat-form-it-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 100%;
+    display: inline-block
+}
+
+.next-chat-button {
+    float: left;
+    flex-direction: row;
+    justify-content: center;
+    padding: 7px 16px;
+    gap: 10px;
+    background: #0088a5;
+    width: 175px;
+    left: 527px;
+    top: 731px;
+    font-style: normal;
+    color: #fff;
+    box-shadow: none;
+    border-width: 0
+}
+
+.cancel-chat-button,.next-chat-button {
+    display: flex;
+    height: 36px;
+    font-family: Amazon Ember;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 22px;
+    align-items: center;
+    text-align: center
+}
+
+.cancel-chat-button {
+    padding-left: 20px;
+    width: 90px;
+    color: #0088a5;
+    background-color: #fff;
+    border-radius: 0;
+    border-color: #fff;
+    border-style: none
+}
+
+.chat-form-buttons {
+    width: 100%
+}
+
+.chat-form-header {
+    margin-top: 24px;
+    margin-bottom: 24px
+}
+
+.chat-form-title-text {
+    color: #00464f
+}
+
+.cancel-button {
+    float: left
+}
+
+.next-button {
+    float: right
+}
+
+.popover-text {
+    color: #232f3e
+}
+
+.info-button {
+    display: inline-block;
+    vertical-align: text-bottom;
+    height: 14px
+}
+
+@media only screen and (max-width: 450px) {
+    .form-content {
+        width:80%;
+        margin-bottom: 12px
+    }
+
+    .chat-form-header {
+        margin-top: 12px;
+        margin-bottom: 12px
+    }
+
+    .chat-form-it-buttons {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        width: 100%;
+        display: inline-block
+    }
+
+    .cancel-chat-button {
+        float: right;
+        margin-right: 5px
+    }
+
+    .next-chat-button {
+        float: right;
+        padding: 7px;
+        gap: 10px;
+        text-align: center;
+        max-width: 170px;
+        max-height: 36px
+    }
+}
+
+.select-option-warning-banner {
+    padding-top: 16px
+}
+
+@media only screen and (max-width: 350px) {
+    .form-content {
+        width:90%
+    }
+
+    .chat-form-header {
+        margin-top: 8px
+    }
+}
+
+.messageDiv {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    max-width: 400px;
+    height: 38px;
+    left: 527px;
+    top: 670px;
+    background: #fde1df;
+    border-radius: 4px
+}
+
+.messageImg {
+    padding: 8px
+}
+
+.messageImg,.messageText {
+    position: absolute;
+    max-width: 100%
+}
+
+.messageText {
+    padding: 8px 8px 8px 35px;
+    font-family: Amazon Ember;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    color: #232f3e
+}
+
+header {
+    background-color: #00464f
+}
+
+.it-services-header-span {
+    width: 100%
+}
+
+.it-services-header {
+    padding: 1%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative
+}
+
+.it-services-logo-header {
+    padding-left: 32px;
+    padding-right: 32px;
+    padding-top: 32px
+}
+
+@media only screen and (max-height: 800px),only screen and (max-width:450px) {
+    .it-services-logo-header {
+        max-width:140px;
+        max-height: 40px;
+        padding-left: 32px;
+        padding-right: 32px
+    }
+
+    .it-services-header {
+        padding-right: 10px
+    }
+
+    .it-services-logo {
+        padding-left: 20px
+    }
+}
+
+@media only screen and (max-width: 300px) {
+    .header-class {
+        background-color:#00464f;
+        width: 420px;
+        max-width: 150px;
+        padding-left: 10px
+    }
+
+    .it-services-logo-header {
+        padding-left: 24px;
+        padding-right: 24px
+    }
+
+    .it-services-logo {
+        padding-left: 15px
+    }
+}
+
+@media only screen and (max-width: 280px) {
+    .header-class {
+        max-width:280px
+    }
+
+    .it-services-logo-header {
+        max-width: 125px;
+        padding-left: 24px;
+        padding-right: 24px
+    }
+
+    .it-services-logo {
+        max-height: 40px;
+        max-width: 80px;
+        padding-left: 5px
+    }
+}
+
+.lang-picker {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 8.54674px 19.5354px;
+    gap: 4.88px;
+    width: 145.91px;
+    height: 48.84px;
+    left: 7.33px;
+    top: 0;
+    background: #1a3d45;
+    border: 2.44193px solid #85d7e2;
+    border-radius: 7.32578px;
+    font-family: Amazon Ember;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 17.0935px;
+    line-height: 27px;
+    align-items: center;
+    text-align: center;
+    color: #85d7e2
+}
+
+.it-services-iconGlobe {
+    padding-right: 5px;
+    left: 5%;
+    right: 5%;
+    top: 5%;
+    bottom: 5%
+}
+
+.lang-picker-item {
+    color: #232f3e;
+    height: 40px;
+    left: 0;
+    top: 0;
+    border-radius: 0;
+    padding: 4px;
+    font-family: Amazon Ember;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0;
+    text-align: left;
+    background-color: #fff;
+    box-shadow: inset 0 -1px 0 #8b96a3;
+    flex: none;
+    border: 0;
+    align-self: stretch;
+    flex-grow: 0
+}
+
+.it-services-down-icon {
+    width: 10px;
+    height: 6px;
+    left: calc(50% - 5px);
+    top: calc(50% + 3px);
+    padding-left: 5px
+}
+
+.lang-picker-dropdown {
+    background-color: #1a3d45;
+    border: #1a3d45;
+    font-family: Amazon Ember;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 17.0935px;
+    line-height: 27px
+}
+
+.lang-picker-list {
+    position: absolute;
+    list-style-type: none;
+    margin: 5px 0;
+    padding: 0;
+    border: 2px solid grey;
+    width: 140px;
+    z-index: 1
+}
+
+.lang-picker-list>li {
+    margin: 0;
+    background-color: #fff
+}
+
+.lang-picker-list>li:hover {
+    background-color: #d3d3d3
+}
+
+.lang-picker-list>li>button {
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 5px;
+    margin: 0;
+    font: inherit;
+    cursor: pointer
+}
+
+@media only screen and (max-width: 550px) {
+    .lang-picker-container {
+        padding-right:8px
+    }
+
+    .lang-picker {
+        width: 145px;
+        height: 40px
+    }
+
+    .lang-picker-list {
+        position: absolute;
+        list-style-type: none;
+        margin: 5px 0;
+        padding: 0;
+        border: 2px solid grey;
+        width: 145px;
+        z-index: 1
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    .lang-picker {
+        width:144px;
+        font-size: 15.5px
+    }
+}
+
+@media only screen and (max-width: 280px) {
+    .lang-picker {
+        max-width:130px;
+        max-height: 45px;
+        font-size: 12.5px
+    }
+}
+
+.chat-widget-container {
+    height: 100vh;
+    max-width: 100%
+}
+
+.chat-widget-container,.chat-widget-div {
+    overflow-x: scroll;
+    color: #59595b;
+    background-color: #fff
+}
+
+.chat-widget-div {
+    height: 800px;
+    width: 842px;
+    position: relative;
+    border: 1px solid #b9c0c8;
+    border-radius: 15px;
+    top: 80px;
+    left: 499px;
+    padding: 10px
+}
+
+.chat-widget-div-v1 {
+    height: 100vh;
+    overflow-x: scroll;
+    color: #59595b;
+    max-width: 100%
+}
+
+.body {
+    color: #000
+}
+
+its-customer-widget::part(chat-user-input-container) {
+    width: auto
+}
+
+.button-list {
+    padding-bottom: 32px
+}
+
+.firstaid-link-content {
+    display: flex;
+    align-items: center
+}
+
+.firstaid-link-text {
+    color: #fff;
+    text-decoration: none
+}
+
+.firstaid-link-text:hover {
+    text-decoration: underline
+}
+
+.back-button-img {
+    padding-right: 5px;
+    width: 7px
+}
+
+.lava {
+    transform: scaleY(-1);
+    width: 80%;
+    overflow: hidden;
+    height: 100%
+}
+
+.lava-div {
+    display: flex;
+    justify-content: flex-end;
+    margin: 0;
+    position: absolute;
+    overflow: hidden;
+    width: 100%
+}
+
+@media only screen and (max-width: 550px) {
+    .lava {
+        transform:scaleY(-1);
+        width: 250%;
+        margin-right: -70%;
+        margin-top: -5%;
+        overflow: unset
+    }
+
+    .lava-div {
+        top: 0
+    }
+}
+
+@media only screen and (max-width: 360px) {
+    .lava-div {
+        display:none
+    }
+}
+
+.main-button-link {
+    text-decoration: none
+}
+
+.main-button {
+    width: 342px;
+    padding: 7px 0 7px 28px;
+    border-radius: 5px;
+    border-color: #00464f;
+    box-shadow: 0 5px 15px 0 rgba(0,0,0,.3);
+    background-color: #fff;
+    transition-duration: .2s
+}
+
+.main-button:hover {
+    background-color: #ebf8fa
+}
+
+.main-button-content {
+    display: flex;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    max-width: 280px
+}
+
+.main-button-text {
+    padding-left: 20px
+}
+
+@media only screen and (max-width: 360px) {
+    .main-button {
+        width:300px
+    }
+
+    .main-button-content {
+        max-width: 250px
+    }
+}
+
+@media only screen and (max-width: 315px) {
+    .main-button {
+        width:250px
+    }
+
+    .main-button-content {
+        max-width: 200px
+    }
+}
+
+body,html {
+    overscroll-behavior: none;
+    background-color: #00464f
+}
+
+.firstaid-content {
+    height: 100vh
+}
+
+.button-list-content {
+    position: relative;
+    padding-left: 11%;
+    padding-top: 10%;
+    max-width: 492px
+}
+
+.it-services-logo-div {
+    height: 140px
+}
+
+.button-list-content-center-aligned {
+    position: relative;
+    padding: 8%;
+    display: flex;
+    justify-content: center
+}
+
+.it-services-logo-div-center-aligned {
+    padding-left: 32px;
+    padding-right: 32px;
+    padding-top: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative
+}
+
+.it-services-logo {
+    max-width: 220px
+}
+
+.button-list-aligned {
+    text-align: center
+}
+
+.additional-text-box {
+    color: #ebf8fa;
+    opacity: .8;
+    max-width: 492px
+}
+
+@media only screen and (max-width: 950px) {
+    .button-list-content {
+        padding:25%;
+        display: flex;
+        justify-content: center;
+        max-width: 550px
+    }
+
+    .it-services-logo-div-center-aligned {
+        padding-left: 20px
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .button-list-content {
+        padding:25%;
+        display: flex;
+        justify-content: center;
+        max-width: 550px
+    }
+
+    .it-services-logo-div-center-aligned {
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 20px
+    }
+
+    .it-services-logo-div {
+        padding-bottom: 10%;
+        height: 40px
+    }
+
+    .it-services-logo {
+        display: block;
+        margin: 32 24 772 202;
+        max-width: 140px
+    }
+
+    .button-list {
+        padding-left: 0;
+        max-width: 342px
+    }
+
+    .additional-text-box {
+        display: block
+    }
+}
+
+@media only screen and (max-width: 280px) {
+    .it-services-logo {
+        max-width:180px;
+        max-height: 50px
+    }
+
+    .it-services-logo-div-center-aligned {
+        padding-left: 5px
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    .it-services-logo {
+        max-width:125px;
+        max-height: 45px
+    }
+}
+
+@media only screen and (max-width: 360px) {
+    .it-services-logo-div {
+        padding-bottom:10%;
+        height: 40px
+    }
+
+    .it-services-logo-div-center-aligned {
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 32px
+    }
+
+    .button-list-content {
+        padding-top: 10%
+    }
+
+    .button-list {
+        padding-left: 0;
+        max-width: 300px
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .button-list-content {
+        padding-top:5%
+    }
+
+    .it-services-logo-div-center-aligned {
+        padding-right: 10px;
+        padding-top: 32px
+    }
+
+    .it-services-logo {
+        height: 60px
+    }
+
+    .it-services-logo-div {
+        padding-bottom: 10%;
+        height: 80px
+    }
+}
+
+@media only screen and (max-width: 315px) {
+    .it-services-logo-div-center-aligned {
+        padding-right:10px;
+        padding-top: 32px
+    }
+
+    .button-list {
+        padding-left: 0;
+        max-width: 250px
+    }
+
+    .it-services-logo-div {
+        padding: 10px
+    }
+
+    .it-services-logo {
+        max-width: 100px;
+        max-height: 50px
+    }
+}
+
+@font-face {
+    font-family: AmazonEmber-Regular;
+    src: url(src/view/Page/LegoArticle/fonts/AmazonEmber_Rg.ttf) format("truetype");
+    src: local("AmazonEmber-Regular") url(src/view/Page/LegoArticle/fonts/AmazonEmber_Rg.ttf) format("truetype")
+}
+
+@font-face {
+    font-family: AmazonEmber-Bold;
+    src: url(src/view/Page/LegoArticle/fonts/AmazonEmber_Bd.ttf) format("truetype");
+    src: local("AmazonEmber-Bold") url(src/view/Page/LegoArticle/fonts/AmazonEmber_Bd.ttf) format("truetype")
+}
+
+html {
+    display: flex;
+    justify-content: center;
+    background-color: #fff;
+    font-family: AmazonEmber-Regular;
+    color: #edf8f9;
+    overflow: hidden
+}
+
+body,html {
+    width: 100%;
+    height: 100%
+}
+
+body {
+    position: fixed;
+    overflow-y: scroll;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: 0;
+    overflow-x: hidden
+}
+
+header {
+    width: 100%;
+    height: 12%;
+    background-color: #1b454f
+}
+
+header,header span {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center
+}
+
+header span {
+    height: 100%
+}
+
+.article-content {
+    color: #4c4c4c;
+    text-align: left;
+    width: 100%
+}
+
+#it-service-logo {
+    margin-left: 36px;
+    width: 44%;
+    max-width: 400px
+}
+
+.backlink {
+    color: #1b454f;
+    text-decoration: none
+}
+
+.backlink:hover {
+    text-decoration: underline
+}
+
+.firstaid-riv-page {
+    background-color: #fff;
+    height: 100vh;
+    overflow: auto
+}
+
+.riv-page-content {
+    margin: auto;
+    width: 70%;
+    min-width: 250px;
+    max-width: 400px
+}
+
+.riv-page-header {
+    margin-top: 24px;
+    margin-bottom: 24px;
+    max-width: 400px
+}
+
+.riv-page-title-text {
+    color: #00464f
+}
+
+.riv-page-subtitle {
+    margin: 0;
+    color: #4c4c4c
+}
+
+.verification-logo-right {
+    margin-left: 10px
+}
+
+.verification-button {
+    border: none;
+    background-color: #eaf8f9;
+    border-radius: 5px;
+    padding: 15px 29px;
+    max-width: 400px
+}
+
+.verification-type-text {
+    margin: 0;
+    padding-top: 12px;
+    color: #00464f
+}
+
+.verification-description-text {
+    color: #00464f;
+    opacity: .8;
+    text-align: left
+}
+
+.verification-note-text {
+    margin: 0;
+    color: #272626;
+    opacity: .8;
+    text-align: left
+}
+
+.unverified-button {
+    border: 1px solid #ccc;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 15px 29px;
+    max-width: 400px
+}
+
+@media only screen and (max-height: 800px),only screen and (max-width:450px) {
+    .riv-page-content {
+        width:80%
+    }
+
+    .riv-page-header {
+        margin-top: 12px;
+        margin-bottom: 12px
+    }
+
+    .unverified-button,.verification-button {
+        padding: 12px 23px
+    }
+}
+
+@media only screen and (max-width: 350px) {
+    .riv-page-content {
+        width:90%
+    }
+
+    .riv-page-header {
+        margin-top: 8px
+    }
+}
