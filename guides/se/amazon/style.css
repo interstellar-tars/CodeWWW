@@ -932,3 +932,11 @@ header span {
         margin-top: 8px
     }
 }
+a{
+    text-decoration: none;
+    color: #eaf8f9;
+ }
+a:hover{
+    text-decoration: underline;
+    color: #ccc;
+}
