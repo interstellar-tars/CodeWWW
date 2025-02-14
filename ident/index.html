@@ -11,7 +11,7 @@
             text-align: center;
             padding: 20px;
         }
-        #login-container, #dashboard {
+        #login-container, #register-container, #dashboard {
             max-width: 400px;
             margin: auto;
             padding: 20px;
@@ -43,7 +43,16 @@
     </style>
 </head>
 <body>
-    <div id="login-container">
+    <div id="register-container">
+        <h2>Register</h2>
+        <input type="text" id="reg-username" placeholder="Username">
+        <input type="password" id="reg-password" placeholder="Password">
+        <button onclick="register()">Register</button>
+        <p id="register-error" style="color: red;"></p>
+        <p><a href="#" onclick="showLogin()">Already have an account? Login here.</a></p>
+    </div>
+    
+    <div id="login-container" style="display: none;">
         <h2>Login</h2>
         <input type="text" id="username" placeholder="Username">
         <input type="password" id="password" placeholder="Password">
@@ -62,6 +71,30 @@
     <script>
         const WORKER_URL = "https://cwww-ident-worker.cubiodojo.workers.dev";
 
+        function showLogin() {
+            document.getElementById("register-container").style.display = "none";
+            document.getElementById("login-container").style.display = "block";
+        }
+
+        async function register() {
+            const username = document.getElementById("reg-username").value;
+            const password = document.getElementById("reg-password").value;
+            
+            const response = await fetch(`${WORKER_URL}/register`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ username, password })
+            });
+            const data = await response.json();
+            
+            if (data.success) {
+                alert("Registration successful! You can now log in.");
+                showLogin();
+            } else {
+                document.getElementById("register-error").innerText = data.error;
+            }
+        }
+
         async function login() {
             const username = document.getElementById("username").value;
             const password = document.getElementById("password").value;
@@ -79,46 +112,6 @@
                 document.getElementById("user-name").innerText = username;
             } else {
                 document.getElementById("login-error").innerText = "Invalid credentials.";
-            }
-        }
-
-        async function bookIdentity() {
-            const username = document.getElementById("user-name").innerText;
-            
-            const response = await fetch(`${WORKER_URL}/book-identity`, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ username })
-            });
-            const data = await response.json();
-            
-            if (data.success) {
-                document.getElementById("identity-details").innerHTML = `
-                    <p><strong>Name:</strong> ${data.identity.fullName}</p>
-                    <p><strong>Age:</strong> ${data.identity.age}</p>
-                    <p><strong>Place of Birth:</strong> ${data.identity.placeOfBirth}</p>
-                `;
-                document.getElementById("unclaim-btn").style.display = "block";
-            } else {
-                alert(data.error);
-            }
-        }
-
-        async function unclaimIdentity() {
-            const username = document.getElementById("user-name").innerText;
-            
-            const response = await fetch(`${WORKER_URL}/unclaim-identity`, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ username })
-            });
-            const data = await response.json();
-            
-            if (data.success) {
-                document.getElementById("identity-details").innerHTML = "";
-                document.getElementById("unclaim-btn").style.display = "none";
-            } else {
-                alert(data.error);
             }
         }
     </script>
