@@ -60,40 +60,66 @@
     </div>
 
     <script>
-        function login() {
+        const WORKER_URL = "https://cwww-ident-worker.cubiodojo.workers.dev";
+
+        async function login() {
             const username = document.getElementById("username").value;
             const password = document.getElementById("password").value;
-            if (username && password) {
+            
+            const response = await fetch(`${WORKER_URL}/login`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ username, password })
+            });
+            const data = await response.json();
+            
+            if (data.success) {
                 document.getElementById("login-container").style.display = "none";
                 document.getElementById("dashboard").style.display = "block";
                 document.getElementById("user-name").innerText = username;
             } else {
-                document.getElementById("login-error").innerText = "Please enter valid credentials.";
+                document.getElementById("login-error").innerText = "Invalid credentials.";
             }
         }
 
-        function logout() {
-            document.getElementById("login-container").style.display = "block";
-            document.getElementById("dashboard").style.display = "none";
-            document.getElementById("username").value = "";
-            document.getElementById("password").value = "";
-        }
-
-        function bookIdentity() {
-            document.getElementById("identity-details").innerHTML = "<p>Fetching identity...</p>";
-            setTimeout(() => {
+        async function bookIdentity() {
+            const username = document.getElementById("user-name").innerText;
+            
+            const response = await fetch(`${WORKER_URL}/book-identity`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ username })
+            });
+            const data = await response.json();
+            
+            if (data.success) {
                 document.getElementById("identity-details").innerHTML = `
-                    <p><strong>Name:</strong> John Doe</p>
-                    <p><strong>Age:</strong> 30</p>
-                    <p><strong>Place of Birth:</strong> New York</p>
+                    <p><strong>Name:</strong> ${data.identity.fullName}</p>
+                    <p><strong>Age:</strong> ${data.identity.age}</p>
+                    <p><strong>Place of Birth:</strong> ${data.identity.placeOfBirth}</p>
                 `;
                 document.getElementById("unclaim-btn").style.display = "block";
-            }, 1000);
+            } else {
+                alert(data.error);
+            }
         }
 
-        function unclaimIdentity() {
-            document.getElementById("identity-details").innerHTML = "";
-            document.getElementById("unclaim-btn").style.display = "none";
+        async function unclaimIdentity() {
+            const username = document.getElementById("user-name").innerText;
+            
+            const response = await fetch(`${WORKER_URL}/unclaim-identity`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ username })
+            });
+            const data = await response.json();
+            
+            if (data.success) {
+                document.getElementById("identity-details").innerHTML = "";
+                document.getElementById("unclaim-btn").style.display = "none";
+            } else {
+                alert(data.error);
+            }
         }
     </script>
 </body>
