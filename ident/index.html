@@ -1,1 +1,38 @@
-Hello World
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Identity Booking</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Identity Booking System</h1>
+        <div id="login-section">
+            <input type="text" id="username" placeholder="Username">
+            <input type="password" id="password" placeholder="Password">
+            <button onclick="login()">Login</button>
+        </div>
+        
+        <div id="dashboard" class="hidden">
+            <h2>Welcome, <span id="user-name"></span></h2>
+            <button onclick="claimIdentity()">Claim Identity</button>
+            <button onclick="unclaimIdentity()">Unclaim Identity</button>
+            <div id="identity-info" class="hidden">
+                <h3>Assigned Identity</h3>
+                <p><strong>Full Name:</strong> <span id="full-name"></span></p>
+                <p><strong>Age:</strong> <span id="age"></span></p>
+                <p><strong>Date of Birth:</strong> <span id="dob"></span></p>
+                <p><strong>Place of Birth:</strong> <span id="pob"></span></p>
+                <p><strong>Place of Residence:</strong> <span id="por"></span></p>
+                <p><strong>Place of Work:</strong> <span id="pow"></span></p>
+                <p><strong>Gmail:</strong> <span id="gmail"></span></p>
+                <p><strong>Roblox:</strong> <span id="roblox"></span></p>
+                <p><strong>Discord:</strong> <span id="discord"></span></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
