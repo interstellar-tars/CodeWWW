@@ -100,9 +100,21 @@
             text-align: center;
         }
     </style>
+    <script>
+        async function fetchNotice() {
+            try {
+                const response = await fetch("https://cool-lab-6e61.cubiodojo.workers.dev/api/notice");
+                const noticeText = await response.text();
+                document.getElementById("notice-banner").textContent = noticeText || "No current notices.";
+            } catch (error) {
+                console.error("Failed to fetch notice:", error);
+            }
+        }
+        window.onload = fetchNotice;
+    </script>
 </head>
 <body>
-    <div class="banner-notice"><strong>Notice: This site is currently undergoing upgrades and is subject to disconnect at random times to keep information up-to-date.</strong></div>
+    <div class="banner-notice" id="notice-banner"><strong>Loading notice...</strong></div>
     <div class="container">
         <h1>CodeWWW IT Help Page</h1>
         
