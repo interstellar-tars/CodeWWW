@@ -1,1 +1,140 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeWWW IT Help</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            background-color: #f4f4f4; 
+            color: #333; 
+        }
+        .container { 
+            max-width: 800px; 
+            margin: 40px auto; 
+            background: white; 
+            padding: 20px; 
+            border-radius: 10px; 
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+        }
+        h1 { 
+            text-align: center; 
+            color: #007bff; 
+        }
+        h2 { 
+            border-bottom: 2px solid #007bff; 
+            padding-bottom: 5px; 
+        }
+        .faq, .contact, .ticket { 
+            margin-top: 20px; 
+        }
+        label { 
+            font-weight: bold; 
+            margin-top: 10px; 
+            display: block; 
+        }
+        input, textarea { 
+            width: 100%; 
+            padding: 10px; 
+            margin-top: 5px; 
+            border: 1px solid #ccc; 
+            border-radius: 5px; 
+        }
+        button { 
+            margin-top: 10px; 
+            padding: 10px; 
+            background: #007bff; 
+            color: white; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            width: 100%; 
+            font-size: 16px;
+        }
+        button:hover { 
+            background: #0056b3; 
+        }
+        .faq p { 
+            background: #eef; 
+            padding: 10px; 
+            border-left: 4px solid #007bff; 
+            border-radius: 5px; 
+            margin-bottom: 10px; 
+        }
+        .contact p { 
+            background: #eef; 
+            padding: 10px; 
+            border-radius: 5px; 
+        }
+        .banner-notice{
+            background: rgb(170, 230, 152); 
+            padding: 10px; 
+            border-left: 8px solid #07d355; 
+            border-radius: 5px; 
+            margin-bottom: 10px; 
+            width: 100%;
+            height: 5vh;
+            text-align: center;
+        }
+        .banner-warning{
+            background: rgb(230, 152, 152); 
+            padding: 10px; 
+            border-left: 8px solid #971717; 
+            border-radius: 5px; 
+            margin-bottom: 10px; 
+            width: 100%;
+            height: 5vh;
+            text-align: center;
+        }
+        .banner-alert{
+            background: rgb(226, 176, 110); 
+            padding: 10px; 
+            border-left: 8px solid #c46813; 
+            border-radius: 5px; 
+            margin-bottom: 10px; 
+            width: 100%;
+            height: 5vh;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="banner-notice"><strong>Notice: This site is currently undergoing upgrades and is subject to disconnect at random times to keep information up-to-date.</strong></div>
+    <div class="container">
+        <h1>CodeWWW IT Help Page</h1>
+        
+        <section class="faq">
+            <h2>Frequently Asked Questions</h2>
+            <p><strong>Q: I forgot my password. What should I do?</strong><br>A: Use the password reset link on the login page or contact IT support.</p>
+            <p><strong>Q: My email is not working. How can I fix it?</strong><br>A: Check your internet connection, try logging in from another browser, or contact IT support.</p>
+            <p><strong>Q: I need a new email account for testing.</strong><br>A: Contact IT support stating that you need a new email account. State your exact reason and keep in mind you may require approval from your lead.</p>
+            <p><strong>Q: I've lost access to my company Roblox account. What should I do?</strong><br>A: Immediately contact your lead and make them aware. Do not attempt to create a new one prior to your lead's instructions.</p>
+        </section>
+        
+        <section class="ticket">
+            <h2>Submit a Support Ticket</h2>
+            <form>
+                <label>This form is currently not available. Please try again later.</label>
+                <label for="name">Name:</label>
+                <input type="text" id="name" required disabled="">
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" required disabled="">
+                
+                <label for="issue">Describe your issue:</label>
+                <textarea id="issue" rows="4" required disabled=""></textarea>
+                
+                <button type="submit" disabled="">Submit Ticket</button>
+            </form>
+        </section>
+        
+        <section class="contact">
+            <h2>Contact IT Support</h2>
+            <p><strong>Email:</strong> codewww.it24@proton.me</p>
+        </section>
+    </div>
+</body>
+</html>
