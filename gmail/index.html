@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fake Gmail</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="login-container">
+        <h2>Login</h2>
+        <input type="text" id="username" placeholder="Username">
+        <input type="password" id="password" placeholder="Password">
+        <button onclick="login()">Login</button>
+    </div>
+    
+    <div id="app-container" style="display: none;">
+        <header>
+            <h1>Fake Gmail</h1>
+            <button onclick="logout()">Logout</button>
+        </header>
+        <div class="content">
+            <aside>
+                <button onclick="composeEmail()">Compose</button>
+                <ul id="inbox"></ul>
+            </aside>
+            <main>
+                <div id="email-view"></div>
+                <div id="reply-container" style="display: none;">
+                    <textarea id="reply-text" placeholder="Reply..."></textarea>
+                    <button onclick="sendReply()">Send</button>
+                </div>
+            </main>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
