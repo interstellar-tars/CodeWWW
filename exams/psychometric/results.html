@@ -12,5 +12,13 @@
         <p id="score"></p>
         <button id="share-link-btn">Share Results</button>
     </div>
+
+    <script>
+        // Handle result sharing functionality
+        document.getElementById('share-link-btn').addEventListener('click', function() {
+            const resultLink = window.location.href + '?score=' + encodeURIComponent(document.getElementById('score').textContent);
+            prompt('Share this link:', resultLink);
+        });
+    </script>
 </body>
 </html>
