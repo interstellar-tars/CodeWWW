@@ -5,84 +5,100 @@
   <title>Roblox Admin Panel Copy</title>
   <style>
     body {
-      font-family: Tahoma, sans-serif;
-      font-size: 11px;
+      font-family: Arial, sans-serif;
+      font-size: 12px;
       margin: 0;
-      padding: 10px;
+      padding: 0;
+      background-color: white;
     }
-    .container {
-      display: table;
-      width: 100%;
+    .wrapper {
+      width: 970px;
+      margin: 20px auto;
+      display: flex;
     }
     .left, .right {
-      display: table-cell;
-      vertical-align: top;
       padding: 10px;
     }
     .left {
       width: 60%;
+      border-right: 1px solid #000;
     }
     .right {
       width: 40%;
     }
-    .user-avatar img {
-      width: 75px;
-      height: 75px;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 5px;
-    }
-    th, td {
-      border: 1px solid #000;
-      padding: 2px 5px;
-      text-align: left;
-    }
     input[type="text"] {
-      font-size: 11px;
+      font-size: 12px;
+      padding: 2px;
+      margin: 2px;
+      height: 20px;
       width: 140px;
+    }
+    button {
+      font-size: 11px;
+      padding: 2px 5px;
+      height: 24px;
     }
     input[type="checkbox"] {
       vertical-align: middle;
     }
-    button {
-      font-size: 11px;
-      padding: 0 5px;
+    b {
+      font-weight: bold;
     }
     a {
-      display: block;
-      color: #00f;
+      color: blue;
       text-decoration: underline;
-      margin-top: 2px;
+      font-size: 12px;
+      display: block;
+      margin: 2px 0;
+    }
+    .user-avatar img {
+      width: 95px;
+      height: 95px;
+      margin-top: 5px;
     }
     .section-title {
       font-weight: bold;
       margin-top: 10px;
     }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 11px;
+      margin-top: 5px;
+    }
+    th, td {
+      border: 1px solid black;
+      padding: 3px;
+      text-align: left;
+    }
+    .form-row {
+      margin: 3px 0;
+    }
   </style>
 </head>
 <body>
-  <div class="container">
+  <div class="wrapper">
     <div class="left">
-      <div><strong>User ID:</strong> <input type="text" value="96718229"> <button>Search</button></div>
-      <div><strong>User Name:</strong> <input type="text" value="QAQA17"> <button>Search</button></div>
-      <div><strong>Builders Club Member:</strong> <input type="checkbox"></div>
-      <div><strong>Builders Club Type:</strong> N/A</div>
-      <div><strong>Builders Club Expiration Date:</strong> N/A</div>
-      <div><strong>Builders Club Renewal Date:</strong> N/A</div>
-      <div><strong>Loyal Since:</strong> N/A</div>
-      <div><strong>Current Location:</strong> [ Offline ]</div>
-      <div><strong>Is XBOX User</strong><br>YES</div>
+      <div class="form-row"><b>User ID:</b> <input type="text" value="96718229"> <button>Search</button></div>
+      <div class="form-row"><b>User Name:</b> <input type="text" value="QAQA17"> <button>Search</button></div>
+      <div class="form-row"><b>Builders Club Member:</b> <input type="checkbox"></div>
+      <div class="form-row"><b>Builders Club Type:</b> N/A</div>
+      <div class="form-row"><b>Builders Club Expiration Date:</b> N/A</div>
+      <div class="form-row"><b>Builders Club Renewal Date:</b> N/A</div>
+      <div class="form-row"><b>Loyal Since:</b> N/A</div>
+      <div class="form-row"><b>Current Location:</b> [ Offline ]</div>
+      <div class="form-row"><b>Is XBOX User</b><br>YES</div>
+
       <div class="user-avatar">
         <img src="https://tr.rbxcdn.com/2f13ea97335cb6c8dd34e764d3873dfd/150/150/AvatarHeadshot/Png" alt="Avatar">
       </div>
+
       <a href="#">User homepage</a>
       <a href="#">Moderate user</a>
       <a href="#">Payment info</a>
 
       <div class="section-title">Billing Info</div>
-      <div><strong>Purchase Lock Status:</strong> Unlocked</div>
+      <div class="form-row"><b>Purchase Lock Status:</b> Unlocked</div>
 
       <div class="section-title">Punishments</div>
       <table>
@@ -90,31 +106,31 @@
       </table>
 
       <div class="section-title">Seller Ban</div>
-      <div><strong>Current ban:</strong> None</div>
+      <div><b>Current ban:</b> None</div>
     </div>
 
     <div class="right">
       <div class="section-title">Update User</div>
-      <div><strong>User Name:</strong> <input type="text" value="QAQA17"></div>
-      <div><strong>User Blurb:</strong> <a href="#">(scrub)</a></div>
-      <div><strong>Email:</strong> <input type="text"></div>
-      <div><strong>Password:</strong> <input type="text"></div>
-      <div><strong>Facebook connect:</strong> Not Connected</div>
-      <div><strong>Facebook Url:</strong> Not Connected</div>
-      <div><strong>Twitter Url:</strong> Not Connected</div>
-      <div><strong>YouTube Url:</strong> Not Connected</div>
-      <div><strong>Twitch Url:</strong> Not Connected</div>
-      <div><strong>Google+ Url:</strong> Not Connected</div>
-      <div><strong>User Created:</strong> 10/19/2015 7:28:56 PM</div>
-      <div><strong>Last Location:</strong> Website</div>
-      <div><strong>Last Activity:</strong> 10/19/2015 9:28:21 PM</div>
-      <div><strong>Approved:</strong> <input type="checkbox" checked></div>
-      <button>Update User</button>
+      <div class="form-row"><b>User Name:</b> <input type="text" value="QAQA17"></div>
+      <div class="form-row"><b>User Blurb:</b> <a href="#">(scrub)</a></div>
+      <div class="form-row"><b>Email:</b> <input type="text"></div>
+      <div class="form-row"><b>Password:</b> <input type="text"></div>
+      <div class="form-row"><b>Facebook connect:</b> Not Connected</div>
+      <div class="form-row"><b>Facebook Url:</b> Not Connected</div>
+      <div class="form-row"><b>Twitter Url:</b> Not Connected</div>
+      <div class="form-row"><b>YouTube Url:</b> Not Connected</div>
+      <div class="form-row"><b>Twitch Url:</b> Not Connected</div>
+      <div class="form-row"><b>Google+ Url:</b> Not Connected</div>
+      <div class="form-row"><b>User Created:</b> 10/19/2015 7:28:56 PM</div>
+      <div class="form-row"><b>Last Location:</b> Website</div>
+      <div class="form-row"><b>Last Activity:</b> 10/19/2015 9:28:21 PM</div>
+      <div class="form-row"><b>Approved:</b> <input type="checkbox" checked></div>
+      <div class="form-row"><button>Update User</button></div>
 
       <div class="section-title">Badges and settings</div>
-      <div><strong>Robux:</strong> 0</div>
-      <div><strong>Tickets:</strong> 10</div>
-      <div><strong>Credit:</strong> $0.00</div>
+      <div class="form-row"><b>Robux:</b> 0</div>
+      <div class="form-row"><b>Tickets:</b> 10</div>
+      <div class="form-row"><b>Credit:</b> $0.00</div>
     </div>
   </div>
 </body>
