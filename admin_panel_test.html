@@ -6,53 +6,59 @@
   <style>
     body {
       font-family: Tahoma, sans-serif;
-      background-color: white;
+      font-size: 11px;
+      margin: 0;
+      padding: 10px;
     }
     .container {
-      display: flex;
-      flex-wrap: wrap;
-      font-size: 11px;
+      display: table;
+      width: 100%;
     }
     .left, .right {
-      padding: 10px 20px;
-      box-sizing: border-box;
+      display: table-cell;
       vertical-align: top;
+      padding: 10px;
     }
     .left {
-      width: 50%;
+      width: 60%;
     }
     .right {
-      width: 50%;
+      width: 40%;
     }
-    .user-avatar {
-      display: block;
-      margin: 10px 0;
+    .user-avatar img {
+      width: 75px;
+      height: 75px;
     }
     table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 10px;
-      font-size: 11px;
+      margin-top: 5px;
     }
     th, td {
-      border: 1px solid #ccc;
-      padding: 2px 4px;
+      border: 1px solid #000;
+      padding: 2px 5px;
       text-align: left;
     }
     input[type="text"] {
-      width: 150px;
       font-size: 11px;
+      width: 140px;
+    }
+    input[type="checkbox"] {
+      vertical-align: middle;
     }
     button {
       font-size: 11px;
-    }
-    .section-title {
-      font-weight: bold;
-      margin-top: 15px;
+      padding: 0 5px;
     }
     a {
       display: block;
-      margin-bottom: 4px;
+      color: #00f;
+      text-decoration: underline;
+      margin-top: 2px;
+    }
+    .section-title {
+      font-weight: bold;
+      margin-top: 10px;
     }
   </style>
 </head>
@@ -69,7 +75,7 @@
       <div><strong>Current Location:</strong> [ Offline ]</div>
       <div><strong>Is XBOX User</strong><br>YES</div>
       <div class="user-avatar">
-        <img src="https://tr.rbxcdn.com/2f13ea97335cb6c8dd34e764d3873dfd/150/150/AvatarHeadshot/Png" alt="Avatar" width="75">
+        <img src="https://tr.rbxcdn.com/2f13ea97335cb6c8dd34e764d3873dfd/150/150/AvatarHeadshot/Png" alt="Avatar">
       </div>
       <a href="#">User homepage</a>
       <a href="#">Moderate user</a>
