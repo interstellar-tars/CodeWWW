@@ -11,11 +11,12 @@
     .container {
       display: flex;
       flex-wrap: wrap;
-      font-size: 12px;
+      font-size: 11px;
     }
     .left, .right {
-      padding: 20px;
+      padding: 10px 20px;
       box-sizing: border-box;
+      vertical-align: top;
     }
     .left {
       width: 50%;
@@ -23,35 +24,35 @@
     .right {
       width: 50%;
     }
-    .highlight {
-      background-color: yellow;
-      font-weight: bold;
-    }
     .user-avatar {
-      display: flex;
-      align-items: center;
-      gap: 10px;
+      display: block;
       margin: 10px 0;
     }
     table {
       width: 100%;
       border-collapse: collapse;
       margin-top: 10px;
+      font-size: 11px;
     }
     th, td {
       border: 1px solid #ccc;
-      padding: 4px;
+      padding: 2px 4px;
       text-align: left;
+    }
+    input[type="text"] {
+      width: 150px;
+      font-size: 11px;
+    }
+    button {
+      font-size: 11px;
     }
     .section-title {
       font-weight: bold;
-      margin-top: 20px;
+      margin-top: 15px;
     }
-    input[type="text"] {
-      width: 200px;
-    }
-    button {
-      margin-top: 5px;
+    a {
+      display: block;
+      margin-bottom: 4px;
     }
   </style>
 </head>
@@ -66,13 +67,13 @@
       <div><strong>Builders Club Renewal Date:</strong> N/A</div>
       <div><strong>Loyal Since:</strong> N/A</div>
       <div><strong>Current Location:</strong> [ Offline ]</div>
-      <div><span class="highlight">Is XBOX User</span><br><strong>YES</strong></div>
+      <div><strong>Is XBOX User</strong><br>YES</div>
       <div class="user-avatar">
         <img src="https://tr.rbxcdn.com/2f13ea97335cb6c8dd34e764d3873dfd/150/150/AvatarHeadshot/Png" alt="Avatar" width="75">
       </div>
-      <div><a href="#">User homepage</a></div>
-      <div><a href="#">Moderate user</a></div>
-      <div><a href="#">Payment info</a></div>
+      <a href="#">User homepage</a>
+      <a href="#">Moderate user</a>
+      <a href="#">Payment info</a>
 
       <div class="section-title">Billing Info</div>
       <div><strong>Purchase Lock Status:</strong> Unlocked</div>
@@ -105,8 +106,8 @@
       <button>Update User</button>
 
       <div class="section-title">Badges and settings</div>
-      <div><span class="highlight">Robux:</span> 0</div>
-      <div><span class="highlight">Tickets:</span> 10</div>
+      <div><strong>Robux:</strong> 0</div>
+      <div><strong>Tickets:</strong> 10</div>
       <div><strong>Credit:</strong> $0.00</div>
     </div>
   </div>
