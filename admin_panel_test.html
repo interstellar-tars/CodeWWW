@@ -2,88 +2,113 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>User Info Page</title>
+  <title>Roblox Admin Panel Copy</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      margin: 40px;
-      background-color: #f4f4f4;
+      font-family: Tahoma, sans-serif;
+      background-color: white;
     }
-    h2 {
-      margin-top: 40px;
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      font-size: 12px;
     }
-    .section {
-      background: white;
+    .left, .right {
       padding: 20px;
-      border-radius: 8px;
-      margin-bottom: 20px;
-      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+      box-sizing: border-box;
     }
-    .label {
-      font-weight: bold;
+    .left {
+      width: 50%;
+    }
+    .right {
+      width: 50%;
     }
     .highlight {
-      background: yellow;
+      background-color: yellow;
       font-weight: bold;
     }
-    img.avatar {
-      height: 100px;
+    .user-avatar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 10px 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 4px;
+      text-align: left;
+    }
+    .section-title {
+      font-weight: bold;
+      margin-top: 20px;
+    }
+    input[type="text"] {
+      width: 200px;
+    }
+    button {
+      margin-top: 5px;
     }
   </style>
 </head>
 <body>
+  <div class="container">
+    <div class="left">
+      <div><strong>User ID:</strong> <input type="text" value="96718229"> <button>Search</button></div>
+      <div><strong>User Name:</strong> <input type="text" value="QAQA17"> <button>Search</button></div>
+      <div><strong>Builders Club Member:</strong> <input type="checkbox"></div>
+      <div><strong>Builders Club Type:</strong> N/A</div>
+      <div><strong>Builders Club Expiration Date:</strong> N/A</div>
+      <div><strong>Builders Club Renewal Date:</strong> N/A</div>
+      <div><strong>Loyal Since:</strong> N/A</div>
+      <div><strong>Current Location:</strong> [ Offline ]</div>
+      <div><span class="highlight">Is XBOX User</span><br><strong>YES</strong></div>
+      <div class="user-avatar">
+        <img src="https://tr.rbxcdn.com/2f13ea97335cb6c8dd34e764d3873dfd/150/150/AvatarHeadshot/Png" alt="Avatar" width="75">
+      </div>
+      <div><a href="#">User homepage</a></div>
+      <div><a href="#">Moderate user</a></div>
+      <div><a href="#">Payment info</a></div>
 
-  <h1>User Management Page</h1>
+      <div class="section-title">Billing Info</div>
+      <div><strong>Purchase Lock Status:</strong> Unlocked</div>
 
-  <div class="section">
-    <h2>User Info</h2>
-    <p><span class="label">User ID:</span> 96718229</p>
-    <p><span class="label">User Name:</span> QAQA17</p>
-    <p><span class="label">Builders Club Member:</span> No</p>
-    <p><span class="label">Builders Club Type:</span> N/A</p>
-    <p><span class="label">Builders Club Expiration Date:</span> N/A</p>
-    <p><span class="label">Builders Club Renewal Date:</span> N/A</p>
-    <p><span class="label">Loyal Since:</span> N/A</p>
-    <p><span class="label">Current Location:</span> [Offline]</p>
-    <p><span class="highlight">Is XBOX User:</span> YES</p>
-    <img class="avatar" src="https://tr.rbxcdn.com/2f13ea97335cb6c8dd34e764d3873dfd/150/150/AvatarHeadshot/Png" alt="Avatar">
-    <p><a href="#">User homepage</a> | <a href="#">Moderate user</a> | <a href="#">Payment info</a></p>
+      <div class="section-title">Punishments</div>
+      <table>
+        <tr><th>ID</th><th>Action</th><th>Moderator</th><th>Created</th><th>Expiration</th></tr>
+      </table>
+
+      <div class="section-title">Seller Ban</div>
+      <div><strong>Current ban:</strong> None</div>
+    </div>
+
+    <div class="right">
+      <div class="section-title">Update User</div>
+      <div><strong>User Name:</strong> <input type="text" value="QAQA17"></div>
+      <div><strong>User Blurb:</strong> <a href="#">(scrub)</a></div>
+      <div><strong>Email:</strong> <input type="text"></div>
+      <div><strong>Password:</strong> <input type="text"></div>
+      <div><strong>Facebook connect:</strong> Not Connected</div>
+      <div><strong>Facebook Url:</strong> Not Connected</div>
+      <div><strong>Twitter Url:</strong> Not Connected</div>
+      <div><strong>YouTube Url:</strong> Not Connected</div>
+      <div><strong>Twitch Url:</strong> Not Connected</div>
+      <div><strong>Google+ Url:</strong> Not Connected</div>
+      <div><strong>User Created:</strong> 10/19/2015 7:28:56 PM</div>
+      <div><strong>Last Location:</strong> Website</div>
+      <div><strong>Last Activity:</strong> 10/19/2015 9:28:21 PM</div>
+      <div><strong>Approved:</strong> <input type="checkbox" checked></div>
+      <button>Update User</button>
+
+      <div class="section-title">Badges and settings</div>
+      <div><span class="highlight">Robux:</span> 0</div>
+      <div><span class="highlight">Tickets:</span> 10</div>
+      <div><strong>Credit:</strong> $0.00</div>
+    </div>
   </div>
-
-  <div class="section">
-    <h2>Update User</h2>
-    <p><span class="label">User Name:</span> QAQA17</p>
-    <p><span class="label">User Blurb:</span> (scrub)</p>
-    <p><span class="label">Email:</span> Not Provided</p>
-    <p><span class="label">Password:</span> Not Provided</p>
-    <p><span class="label">Facebook Connect:</span> Not Connected</p>
-    <p><span class="label">Twitter URL:</span> Not Connected</p>
-    <p><span class="label">YouTube URL:</span> Not Connected</p>
-    <p><span class="label">Twitch URL:</span> Not Connected</p>
-    <p><span class="label">Google+ URL:</span> Not Connected</p>
-    <p><span class="label">User Created:</span> 10/19/2015 7:28:56 PM</p>
-    <p><span class="label">Last Location:</span> Website</p>
-    <p><span class="label">Last Activity:</span> 10/19/2015 9:28:21 PM</p>
-    <p><span class="label">Approved:</span> Yes</p>
-    <button>Update User</button>
-  </div>
-
-  <div class="section">
-    <h2>Billing Info</h2>
-    <p><span class="label">Purchase Lock Status:</span> Unlocked</p>
-  </div>
-
-  <div class="section">
-    <h2>Punishments</h2>
-    <p><span class="label">Seller Ban:</span> None</p>
-  </div>
-
-  <div class="section">
-    <h2>Badges and Settings</h2>
-    <p><span class="highlight">Robux:</span> 0</p>
-    <p><span class="highlight">Tickets:</span> 10</p>
-    <p><span class="label">Credit:</span> $0.00</p>
-  </div>
-
 </body>
 </html>
