@@ -5,109 +5,146 @@
     <title>Roblox Admin Clone</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            font-size: 13px;
+            font-family: Tahoma, Arial, sans-serif;
+            font-size: 12px;
+            color: #000;
         }
-        .container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
+        .main {
+            width: 1000px;
+            margin: 20px auto;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        td {
+            padding: 2px 5px;
+            vertical-align: top;
         }
         .section {
-            border: 1px solid #ccc;
-            padding: 15px;
-            width: 400px;
+            border: 1px solid #999;
+            padding: 10px;
+            margin-bottom: 15px;
         }
-        .user-avatar {
-            display: flex;
-            align-items: center;
-            gap: 10px;
+        .section h3 {
+            margin: 0 0 8px 0;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 3px;
         }
         input[type="text"] {
-            width: 100px;
-        }
-        .user-info label,
-        .update-user label {
-            display: block;
-            margin-top: 5px;
-        }
-        .user-info span,
-        .update-user span {
-            display: inline-block;
-            min-width: 100px;
+            width: 130px;
+            font-size: 12px;
         }
         button {
-            margin-top: 10px;
+            font-size: 12px;
+            padding: 2px 5px;
+        }
+        .avatar {
+            float: left;
+            margin-right: 10px;
+        }
+        .links a {
+            display: block;
+            margin-bottom: 2px;
+        }
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
     </style>
 </head>
 <body>
-<div class="container">
-    <div class="section user-info">
-        <label>User ID:</label>
-        <input type="text" value="96718229">
-        <button>Search</button><br>
-
-        <label>User Name:</label>
-        <input type="text" value="QAQA17">
-        <button>Search</button><br>
-
-        <label><input type="checkbox"> Builders Club Member</label><br>
-        <label>Builders Club Type:</label> N/A<br>
-        <label>Builders Club Expiration Date:</label> N/A<br>
-        <label>Builders Club Renewal Date:</label> <input type="text"><br>
-        <label>Loyal Since:</label> N/A<br>
-        <label>Current Location:</label> [ Offline ]<br>
-        <label>Is XBOX User:</label> YES<br>
-
-        <div class="user-avatar">
-            <img src="https://via.placeholder.com/100" alt="Avatar">
-            <div>
-                <a href="#">User homepage</a><br>
-                <a href="#">Moderate user</a><br>
+<div class="main">
+    <div class="section">
+        <table>
+            <tr>
+                <td>User ID:</td>
+                <td><input type="text" value="96718229"> <button>Search</button></td>
+            </tr>
+            <tr>
+                <td>User Name:</td>
+                <td><input type="text" value="QAQA17"> <button>Search</button></td>
+            </tr>
+            <tr>
+                <td>Builders Club Member:</td>
+                <td><input type="checkbox"></td>
+            </tr>
+            <tr>
+                <td>Builders Club Type:</td>
+                <td>N/A</td>
+            </tr>
+            <tr>
+                <td>Builders Club Expiration Date:</td>
+                <td>N/A</td>
+            </tr>
+            <tr>
+                <td>Builders Club Renewal Date:</td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td>Loyal Since:</td>
+                <td>N/A</td>
+            </tr>
+            <tr>
+                <td>Current Location:</td>
+                <td>[ Offline ]</td>
+            </tr>
+            <tr>
+                <td>Is XBOX User:</td>
+                <td>YES</td>
+            </tr>
+        </table>
+        <div style="margin-top:10px;">
+            <div class="avatar">
+                <img src="https://via.placeholder.com/80" alt="avatar">
+            </div>
+            <div class="links">
+                <a href="#">User homepage</a>
+                <a href="#">Moderate user</a>
                 <a href="#">Payment info</a>
             </div>
+            <div style="clear:both;"></div>
         </div>
     </div>
 
-    <div class="section update-user">
-        <label>User Name:</label> <input type="text" value="QAQA17"><br>
-        <label>User Blurb:</label> <a href="#">(scrub)</a><br>
-        <label>Email:</label> <input type="text"><br>
-        <label>Password:</label> <input type="text"><br>
-
-        <label>Facebook connect:</label> Not Connected<br>
-        <label>Facebook Url:</label> Not Connected<br>
-        <label>Twitter Url:</label> Not Connected<br>
-        <label>YouTube Url:</label> Not Connected<br>
-        <label>Twitch Url:</label> Not Connected<br>
-        <label>Google+ Url:</label> Not Connected<br>
-
-        <label>User Created:</label> 10/19/2015 7:28:56 PM<br>
-        <label>Last Location:</label> Website<br>
-        <label>Last Activity:</label> 10/19/2015 9:28:21 PM<br>
-        <label><input type="checkbox" checked> Approved</label><br>
-
-        <button>Update User</button>
+    <div class="section">
+        <table>
+            <tr><td>User Name:</td><td><input type="text" value="QAQA17"></td></tr>
+            <tr><td>User Blurb:</td><td><a href="#">(scrub)</a></td></tr>
+            <tr><td>Email:</td><td><input type="text"></td></tr>
+            <tr><td>Password:</td><td><input type="text"></td></tr>
+            <tr><td>Facebook connect:</td><td>Not Connected</td></tr>
+            <tr><td>Facebook Url:</td><td>Not Connected</td></tr>
+            <tr><td>Twitter Url:</td><td>Not Connected</td></tr>
+            <tr><td>YouTube Url:</td><td>Not Connected</td></tr>
+            <tr><td>Twitch Url:</td><td>Not Connected</td></tr>
+            <tr><td>Google+ Url:</td><td>Not Connected</td></tr>
+            <tr><td>User Created:</td><td>10/19/2015 7:28:56 PM</td></tr>
+            <tr><td>Last Location:</td><td>Website</td></tr>
+            <tr><td>Last Activity:</td><td>10/19/2015 9:28:21 PM</td></tr>
+            <tr><td>Approved:</td><td><input type="checkbox" checked></td></tr>
+        </table>
+        <button style="margin-top:10px;">Update User</button>
     </div>
 
     <div class="section">
         <h3>Billing Info</h3>
-        <label>Purchase Lock Status:</label> Unlocked
+        <p>Purchase Lock Status: Unlocked</p>
     </div>
 
     <div class="section">
         <h3>Punishments</h3>
-        <label>ID | Action | Moderator | Created | Expiration</label><br>
-        <strong>Seller Ban</strong><br>
-        Current ban: None
+        <p><strong>ID | Action | Moderator | Created | Expiration</strong></p>
+        <p><strong>Seller Ban</strong></p>
+        <p>Current ban: None</p>
     </div>
 
     <div class="section">
         <h3>Badges and settings</h3>
-        <label>Robux:</label> 0<br>
-        <label>Tickets:</label> 10<br>
-        <label>Credit:</label> $0.00
+        <p>Robux: 0</p>
+        <p>Tickets: 10</p>
+        <p>Credit: $0.00</p>
     </div>
 </div>
 </body>
